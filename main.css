@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: #080808;
+    width: 100%;
+    min-height: 100%;
+    font-family: "Space Mono", monospace;
+    transition: background 1s ease;
+}
+
+.vp {
+    width: 100vw;
+    height: 100vh;
+}
+
+.center {
+    display: inline-grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-container {
+    --font-size: min(16.666667vh, 12vw);
+    cursor: none;
+}
+
+.hero {
+    line-height: 1.45 * var(--font-size);
+    font-weight: 400;
+    font-style: normal;
+    font-size: var(--font-size);
+    color: white;
+    display: inline-block;
+    margin: 0;
+    pointer-events: click;
+    user-select: none;
+}
+
+#invert {
+    transform-origin: center center;
+    transform: translate(calc(50vw - 50%), calc(50vh - 47.9%)) scale(0.3);
+    border-radius: 10000vw;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    position: fixed;
+    width: calc(2.25*var(--font-size));
+    aspect-ratio: 1;
+    backdrop-filter: invert();
+    -webkit-backdrop-filter: invert();
+    pointer-events: none;
+    font-size: var(--font-size);
+    color: white;
+}
+
+.word {
+    transition-property: opacity, color;
+    transition-duration: 600ms;
+}
+
+
+.hero:has(.fancy:hover)>.word:not(.fancy:hover) {
+    opacity: 0.4;
+}
+
+body:has(#math:hover) {
+    background: #24e0ff;
+}
+
+body:has(#code:hover) {
+    /* background: #e2e603; */
+    background: #db1f00;
+}
+
+body:has(#photo:hover) {
+    background: #c04dff;
+}
+
+#invert::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transition-delay: 200ms;
+    transition: transform cubic-bezier(.57, 1.86, .5, .65) 500ms;
+    transform: translate(-50%, -5%) scale(0); 
+}
+
+.hero-container:has(#math:hover)>#invert::before {
+    content: '←';
+}
+
+.hero-container:has(#code:hover)>#invert::before {
+    content: '→';
+}
+
+.hero-container:has(#photo:hover)>#invert::before {
+    content: '⤤';
+}
+
+.hero-container:has(.fancy:hover) > #invert::before {
+    transform: translate(-50%, -5%) scale(1);
+}
+
+
+.fancy>* {
+    translate: 0 0;
+    display: inline-block;
+    position: relative;
+    transition: transform 750ms cubic-bezier(.57, 1.86, .5, .65);
+}
+
+.fancy:hover>span {
+    animation: bounce 1s cubic-bezier(0.5, 0, 0.5, 1) alternate infinite;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    cursor: inherit;
+}
+
+@keyframes bounce {
+    100% {
+        translate: 0 calc(-0.1 * var(--font-size));
+    }
+}
+
+.fancy:hover .fancy-0 {
+    transform: translate(calc(-0.1* var(--font-size)), calc(-0.2* var(--font-size))) rotate(-20deg);
+}
+
+.fancy:hover .fancy-1 {
+    transform: translate(calc(-0.12* var(--font-size)), calc(0.18* var(--font-size))) rotate(10deg);
+}
+
+.fancy:hover .fancy-2 {
+    transform: translate(calc(0.1* var(--font-size)), calc(-0.2* var(--font-size))) rotate(10deg);
+}
+
+.fancy:hover .fancy-3 {
+    transform: translate(calc(-0.15* var(--font-size)), calc(0.3* var(--font-size))) rotate(40deg);
+}
+
+.fancy:hover .fancy-6 {
+    transform: translate(calc(-0.1* var(--font-size)), calc(-0.2* var(--font-size))) rotate(-20deg);
+}
+
+.fancy:hover .fancy-7 {
+    transform: translate(calc(-0.12* var(--font-size)), calc(0.18* var(--font-size))) rotate(10deg);
+}
+
+.fancy:hover .fancy-4 {
+    transform: translate(calc(0.1* var(--font-size)), calc(-0.2* var(--font-size))) rotate(10deg);
+}
+
+.fancy:hover .fancy-5 {
+    transform: translate(calc(-0.15* var(--font-size)), calc(0.3* var(--font-size))) rotate(40deg);
+}
+
+.fancy:hover .fancy-8 {
+    transform: translate(calc(-0.1* var(--font-size)), calc(-0.2* var(--font-size))) rotate(-20deg);
+}
+
+.fancy:hover .fancy-9 {
+    transform: translate(calc(-0.12* var(--font-size)), calc(0.18* var(--font-size))) rotate(10deg);
+}
+
+.fancy:hover .fancy-10 {
+    transform: translate(calc(0.1* var(--font-size)), calc(-0.2* var(--font-size))) rotate(10deg);
+}
